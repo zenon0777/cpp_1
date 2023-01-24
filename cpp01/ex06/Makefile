@@ -4,11 +4,11 @@ SRCS= main.cpp Harl.cpp
 INC= Harl.hpp
 OBJ =$(subst .cpp,.o,$(SRCS))
 
-%.o: %.cpp
+%.o: %.cpp $(INC)
 	$(CC) -c -o $@ $< $(CFLAGS)
 all: Harl
 
-Harl: $(OBJ) $(INC)
+Harl: $(OBJ)
 		$(CC) -o $@ $^ $(CFLAGS)
 clean:
 	rm -rf Harl $(OBJ)

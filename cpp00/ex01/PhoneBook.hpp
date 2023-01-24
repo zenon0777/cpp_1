@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adaifi <adaifi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/22 00:36:40 by adaifi            #+#    #+#             */
+/*   Updated: 2023/01/24 05:26:07 by adaifi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 #include <iostream>
@@ -7,21 +19,16 @@
 #include<limits>
 #include"Contact.hpp"
 
-using std::cout;
-using std::endl;
-using std::cin;
-using std::string;
-
-class Phonebook : public Contact
+class Phonebook
 {
 	private:
 		int	len;
 		Contact contact[8];
 	public:
-		Phonebook(){}
-		Phonebook(const char *f, const char *l, const char *n, const char *num, const char *ds);
+		Phonebook();
 		void get_infos(int len);
-		void listcontact(int len);
+		void listcontact();
+		~Phonebook();
 };
 
 #endif

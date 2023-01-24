@@ -14,18 +14,14 @@
 #define HUMANB_HPP
 #include<iostream>
 #include"Weapon.hpp"
-using std::cout;
-using std::cin;
-using std::endl;
-using std::string;
 
 class HumanB
 {
 private:
-    const string B_name;
+    const std::string B_name;
     Weapon *B_weapon;
 public:
-    HumanB(const string name);
+    HumanB(const std::string name);
     void set_weapon(Weapon &weapon);
     void attacks(void);
     ~HumanB();

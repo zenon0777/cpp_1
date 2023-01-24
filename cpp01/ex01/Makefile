@@ -1,7 +1,7 @@
 CC=c++
 CFLAGS= -Werror -Wall -Wextra
-SRCS= Zombie.cpp
-INC= Zombie.hpp
+SRCS= Zombie.cpp ZombieHorde.cpp main.cpp
+INC= Zombie.hpp 
 OBJ =$(subst .cpp,.o,$(SRCS))
 
 %.o: %.cpp $(INC)

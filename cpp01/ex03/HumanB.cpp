@@ -12,19 +12,22 @@
 
 #include"HumanB.hpp"
 
-HumanB::HumanB(const string name) : B_name(name), B_weapon(NULL)
-{}
+HumanB::HumanB(const std::string name) : B_name(name), B_weapon(NULL)
+{
+    std::cout << "contructor called" << std::endl;
+}
 
 HumanB::~HumanB()
 {
+    std::cout << "Destructor called" << std::endl;
 }
 
 void HumanB::attacks(void)
 {
     if (B_weapon)
-        cout << B_name << " attacks with their " << B_weapon->getType() << endl;
+        std::cout << B_name << " attacks with their " << B_weapon->getType() << std::endl;
     else
-        cout << B_name << " attacks without weapon" << endl;
+        std::cout << B_name << " attacks without weapon" << std::endl;
 }
 
 void HumanB::set_weapon(Weapon &weapon)

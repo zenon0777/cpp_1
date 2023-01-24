@@ -1,6 +1,6 @@
 CC=c++
-CFLAGS= -Werror -Wall -Wextra
-SRCS= Contact.cpp PhoneBook.cpp
+CFLAGS= -Werror -Wall -Wextra -std=c++98
+SRCS= Contact.cpp PhoneBook.cpp main.cpp
 INC= Contact.hpp PhoneBook.hpp
 OBJ =$(subst .cpp,.o,$(SRCS))
 
@@ -11,6 +11,8 @@ all: PhoneBook
 PhoneBook: $(OBJ)
 		$(CC) -o $@ $^ $(CFLAGS)
 clean:
-	rm -rf PhoneBook $(OBJ)
+	rm -rf $(OBJ)
+fclean:clean
+	rm -rf PhoneBook
 re:clean
 	$(MAKE)

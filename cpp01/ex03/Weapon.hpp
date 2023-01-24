@@ -14,19 +14,16 @@
 #define WEAPON_HPP
 #include<iostream>
 
-using std::cout;
-using std::cin;
-using std::endl;
-using std::string;
+
 
 class Weapon
 {
 private:
-    string w_type;
+    std::string w_type;
 public:
-    const string getType(void);
-    void setType(const string name);
-    Weapon(const string name);
+    const std::string getType(void);
+    void setType(const std::string name);
+    Weapon(const std::string name);
     ~Weapon();
 };
 

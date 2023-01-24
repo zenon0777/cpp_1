@@ -1,96 +1,74 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adaifi <adaifi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/22 00:36:37 by adaifi            #+#    #+#             */
+/*   Updated: 2023/01/24 05:28:33 by adaifi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "PhoneBook.hpp"
 
-void Phonebook::listcontact(int len)
+Phonebook::Phonebook(){
+	this->len = 0;
+}
+
+Phonebook::~Phonebook(){}
+
+void Phonebook::listcontact()
 {
 	int	index = 0;
-	int	x;
+	std::string	x;
+	int k;
 
-	cout << "     index" << '|'
+	std::cout << "     index" << '|'
 		<< " firstname" << '|'
 		<< "  lastname" << '|'
 		<< "  nickname" << "|\n";
-	while (index++ < len && len != 0)
-		contact[index].printcontact(index);
-	cout << "index: ";
-	if (!(cin >> x))
-		cout << "invalid index\n";
-	cin.clear();
-	cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	for (index = 0; index <= len; index++)
+	while (index < this->len)
 	{
-		if (x <= 0 || x > len)
-		{
-			if (cin.eof())
-				return ;
-			cout << "index invalid, Contact doesn't exist : \n";
-		}
-		if (index == x && x > 0)
-			contact[index].contact_info();
+		contact[index].printcontact(index + 1);
+		index++;
+	}
+	std::cout << "index: ";
+	if (!std::getline(std::cin, x))
+		return;
+	for(int i= 0; i < (int)x.length(); i++)
+		k = std::stoi(x, 0, 10);
+	if (k <= 0 || k > this->len)
+	{
+		if (std::cin.eof())
+			return ;
+		std::cout << "index invalid, Contact doesn't exist\n";
+	}
+	for (index = 0; index <= this->len; index++)
+	{
+		if (index == k && k > 0)
+			contact[index - 1].contact_info();
 	}
 }	
 
 void Phonebook::get_infos(int len)
 {
-	string	str[5];
-	// int i;
+	std::string	str[5];
 
-	// cout << "enter : ";
-	// cin >> i;
-	// cin.clear();
-	// cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	cout << "first name :";
+	std::cout << "first name :";
 	if(std::getline(std::cin, str[0]))
-		cout << "lastname : ";
+		std::cout << "lastname : ";
 	if(std::getline(std::cin, str[1]))
-		cout << "nickname : ";
+		std::cout << "nickname : ";
 	if(std::getline(std::cin, str[2]))
-		cout << "phonenumber : ";
+		std::cout << "phonenumber : ";
 	if(std::getline(std::cin, str[3]))
-		cout << "darkest secret : ";
+		std::cout << "darkest secret : ";
 	if(!std::getline(std::cin, str[4]))
 		return ;
-	if (len == 8)
-		len = 0;
-	if (len < 8)
-	{
-	    len++;
-		this->len = len;
-	}
+	if (this->len < 8)
+		this->len = len + 1;
 	contact[len].contactfilling(str[0], str[1], str[2], str[3], str[4]);
-}
-
-Phonebook::Phonebook(const char *f, const char *l, const char *n, const char *num, const char *ds) : Contact(f, l, n, num, ds){}
-
-int main(void)
-{
-	Phonebook	phone;
-	string		cmd;
-	int		i = 0;
-
-	cout << "****Welcom to Awesome PhoneBook****\nPlease enter ADD, for adding a new contact.\n";
-	cout << "To search or get a contact info please type SEARCH\n";
-	cout << "To exit the program enter EXIT\n";
-	while (1)
-	{
-		if(std::getline(std::cin, cmd))
-		{
-			if (!cmd.compare("ADD"))
-			{
-				phone.get_infos(i);
-				if (i < 8)
-					i++;
-			}
-			else if (!cmd.compare("EXIT"))
-				exit(0);
-			else if (!cmd.compare("SEARCH"))
-				phone.listcontact(i);
-			else
-				cout << "Command not found\n";
-		}
-		else
-			break;
-		cout << "PhoneBook > ";
-	}
-	return 0;
+	return ;
 }
 

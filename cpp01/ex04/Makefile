@@ -7,7 +7,7 @@ OBJ =$(subst .cpp,.o,$(SRCS))
 	$(CC) -c -o $@ $< $(CFLAGS)
 all: Sed
 
-Zombie: $(OBJ)
+Sed: $(OBJ)
 		$(CC) -o $@ $^ $(CFLAGS)
 clean:
 	rm -rf Sed $(OBJ)

@@ -12,14 +12,17 @@
 
 #include"HumanA.hpp"
 
-HumanA::HumanA(const string name, Weapon &weapon) : A_name(name), A_weapon(weapon)
-{}
+HumanA::HumanA(const std::string name, Weapon &weapon) : A_name(name), A_weapon(weapon)
+{
+    std::cout << "Constructor called" << std::endl;
+}
 
 HumanA::~HumanA()
 {
+    std::cout << "Destructor called" << std::endl;
 }
 
 void HumanA::attacks(void)
 {
-    cout << A_name << " attacks with their " << A_weapon.getType() << endl;
+    std::cout << A_name << " attacks with their " << A_weapon.getType() << std::endl;
 }

@@ -1,36 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adaifi <adaifi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/22 00:36:32 by adaifi            #+#    #+#             */
+/*   Updated: 2022/12/22 00:36:32 by adaifi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
 #include <iostream>
 #include <iomanip>
 #include<string>
 
-using std::cout;
-using std::cin;
-using std::endl;
-using std::string;
-
 class Contact
 {
 	private:
-		string	firstname;
-		string	lastname;
-		string	nickname;
-		string	phonenumber;
-		string	darkestsecret;
+		std::string	firstname;
+		std::string	lastname;
+		std::string	nickname;
+		std::string	phonenumber;
+		std::string	darkestsecret;
 	public:
-		Contact(){}
-		Contact(string f, string l, string n, string num, string ds)
-		{
-			firstname = f;
-			lastname = l;
-			nickname = n;
-			phonenumber = num;
-			darkestsecret = ds;
-		}
-		void contactfilling(string f, string l, string n, string num, string ds);
+		Contact();
+		void contactfilling(std::string f, std::string l, std::string n, std::string num, std::string ds);
 		void contact_info();
-		void truncate(string str);
+		void truncate(std::string str);
 		void printcontact(int i);
-        ~Contact(){}
+        ~Contact();
 };
 #endif
